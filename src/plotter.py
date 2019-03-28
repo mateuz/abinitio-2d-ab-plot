@@ -104,11 +104,12 @@ class Plotter:
         self.set_color(self.line_color)
         ctx.set_line_width(self.line_width)
 
+
         for x, y, _ in self.data:
             ctx.line_to(x * scale, y * scale)
 
         ctx.stroke()
-
+        
         for x, y, kind in self.data:
             if kind:
                 self.set_color(self.a_color)
@@ -116,8 +117,11 @@ class Plotter:
                 self.set_color(self.b_color)
 
             ctx.arc(x * scale, y * scale, self.ball_radius, 0, 2 * pi)
-
-            ctx.fill()
+            ctx.fill_preserve()
+            ctx.set_source_rgb(0,0,0)
+            #ctx.stroke_preserve()
+            
+            ctx.stroke()
 
     def set_color(self, r=1, g=1, b=1):
         if isinstance(r, tuple):

@@ -24,11 +24,11 @@ def main(filename):
 
     plotter = Plotter(data)
 
-    plotter.ball_radius = 5
-    plotter.a_color = (1, 0, 0)
-    plotter.b_color = (0, 0, 1)
-    plotter.line_width = 1
-    plotter.line_color = (0, 0, 0)
+    plotter.ball_radius = 8
+    plotter.a_color = (1, 1, 1)
+    plotter.b_color = (0, 0, 0)
+    plotter.line_width = 3
+    plotter.line_color = (0.486, 0.486, 0.529)
 
     plotter.render()
     plotter.save(name='prot.png')
