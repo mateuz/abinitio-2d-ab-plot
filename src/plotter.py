@@ -44,11 +44,15 @@ class Plotter:
         return self
 
     def create_surface(self):
-        self.surface = cairo.ImageSurface(
-            cairo.FORMAT_ARGB32,
+        self.surface = cairo.PDFSurface("plot.pdf", 
             self.width * self.scale,
             self.height * self.scale
         )
+        #self.surface = cairo.ImageSurface(
+        #    cairo.FORMAT_ARGB32,
+        #    self.width * self.scale,
+        #    self.height * self.scale
+        #)
         self.surface.set_device_scale(self.scale, self.scale)
         self.ctx = cairo.Context(self.surface)
 
@@ -64,7 +68,9 @@ class Plotter:
         return self
 
     def save(self, name='output.png'):
-        self.surface.write_to_png(name)
+        #self.surface.write_to_png(name)
+        self.ctx.show_page()
+
 
     def biggest_range(self):
         x_range = self.x_axis_range()
